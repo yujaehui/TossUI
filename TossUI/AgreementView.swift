@@ -12,60 +12,26 @@ struct AgreementView: View {
         VStack {
             HStack {
                 VStack(alignment: .leading) {
-                    Text("포인트를 더 모을 수 있게 맞춤 혜택을\n추천해드릴까요?")
-                        .font(.title3)
-                        .fontWeight(.bold)
-                        .padding(.vertical, 20)
-                    HStack {
-                        Image(systemName: "checkmark.square.fill")
-                            .foregroundStyle(.blue)
-                        Text("매일 포인트 받는 출석체크·퀴즈")
-                    }
-                    .padding(.vertical, 10)
-                    HStack {
-                        Image(systemName: "n.circle.fill")
-                            .foregroundStyle(.red)
-                        Text("새로운 이벤트")
-                    }
-                    .padding(.vertical, 10)
-                    HStack {
-                        Image(systemName: "star.fill")
-                            .foregroundStyle(.yellow)
-                        Text("미션 추천")
-                    }
-                    .padding(.vertical, 10)
+                    TitleView()
+                    benefitsViewSetting()
                     Spacer()
-                    Text("[선택] 맞춤형 서비스 이용 동의")
-                        .padding(.vertical)
                 }
                 Spacer()
             }
-
-
-            VStack {
-                HStack {
-                    Spacer()
-                    Button("동의하기") {}
-                    Spacer()
-                }
-                .padding(10)
-                .background(.blue)
-                .foregroundStyle(.white)
-                .clipShape(.buttonBorder)
-
-                HStack {
-                    Spacer()
-                    Button("다음에 하기") {}
-                    Spacer()
-                }
-                .padding(10)
-                .clipShape(.buttonBorder)
-            }
-            Spacer()
-
+            Text("[선택] 맞춤형 서비스 이용 동의")
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.bottom)
+            ButtonView()
         }
         .padding(.horizontal, 20)
-
+    }
+    
+    func benefitsViewSetting() -> some View {
+        VStack(alignment: .leading) {
+            BenefitsView(text: "매일 포인트 받는 출석체크·퀴즈", image: "checkmark.square.fill", color: .blue)
+            BenefitsView(text: "새로운 이벤트", image: "n.circle.fill", color: .red)
+            BenefitsView(text: "미션 추천", image: "star.fill", color: .yellow)
+        }
     }
 }
 
